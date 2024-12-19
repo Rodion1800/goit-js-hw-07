@@ -30,23 +30,17 @@ list.style.display = "flex";
 list.style.justifyContent = "center";
 list.style.flexWrap = "wrap";
 
+let addlist = "";
+
 images.forEach((image) => {
-  const element = document.createElement("li");
-
-  const img = document.createElement("img");
-  img.src = image.url;
-  img.alt = image.alt;
-  img.style.width = "100%";
-  img.style.height = "100%";
-  img.style.objectFit = "cover";
-
-  element.style.width = "calc((100% - 24px) / 3)";
-  element.style.paddingBottom = "48px";
-  element.style.paddingRight = "24px";
-
-  //   element.style.width = "360px";
-
-  element.append(img);
-
-  list.appendChild(element);
+  addlist += `
+    <li style="width: calc((100% - 24px) / 3); padding-bottom: 48px; padding-right: 24px;">
+      <img 
+        src="${image.url}" 
+        alt="${image.alt}" 
+        style="width: 100%; height: 100%; object-fit: cover;" 
+      />
+    </li>`;
 });
+
+list.insertAdjacentHTML("beforeend", addlist);
